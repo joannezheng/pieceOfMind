@@ -1,22 +1,10 @@
-/*********************
 
-  Example code for the Adafruit RGB Character LCD Shield and Library
-
-  This code displays text on the shield, and also reads the buttons on the keypad.
-  When a button is pressed, the backlight changes color.
-
-**********************/
 
 // include the library code:
 #include <Wire.h>
 #include <Adafruit_RGBLCDShield.h>
 #include <utility/Adafruit_MCP23017.h>
 
-
-// The shield uses the I2C SCL and SDA pins. On classic Arduinos
-// this is Analog 4 and 5 so you can't use those for analogRead() anymore
-// However, you can connect other I2C sensors to the I2C bus and share
-// the I2C bus.
 Adafruit_RGBLCDShield lcd = Adafruit_RGBLCDShield();
 
 // These #defines make it easy to set the backlight color
@@ -127,12 +115,12 @@ void loop() {
     lcd.print("Dizziness?");
     symptomCheck();
   }
+//  if (status == 5) {
+//    lcd.setCursor(0, 0);
+//    lcd.print("Blurred vision? ");
+//    symptomCheck();
+//  }
   if (status == 5) {
-    lcd.setCursor(0, 0);
-    lcd.print("Blurred vision? ");
-    symptomCheck();
-  }
-  if (status == 6) {
     lcd.clear();
     delay(1000);
     lcd.setCursor(0, 0);
@@ -148,7 +136,7 @@ void loop() {
     status = status + 1;
   }
   // Cognitive Assessment
-  if (status == 7) {
+  if (status == 6) {
     lcd.setCursor(0, 0);
     uint8_t buttons = lcd.readButtons();
     int score = 0;
@@ -168,7 +156,7 @@ void loop() {
     lcd.clear();
     status = status + 1;
   }
-  if (status == 8) {
+  if (status == 7) {
     lcd.print("What's the date?");
     delay(DELAY_QUESTION);
     lcd.setCursor(0, 1);
@@ -178,7 +166,7 @@ void loop() {
     lcd.clear();
     status = status + 1;
   }
-  if (status == 9) {
+  if (status == 8) {
     lcd.print("Day of the week?");
     delay(DELAY_QUESTION);
     lcd.setCursor(0, 1);
@@ -188,7 +176,7 @@ void loop() {
     lcd.clear();
     status = status + 1;
   }
-  if (status == 10) {
+  if (status == 9) {
     lcd.print("What year?");
     delay(DELAY_QUESTION);
     lcd.setCursor(0, 1);
@@ -198,7 +186,7 @@ void loop() {
     lcd.clear();
     status = status + 1;
   }
-  if (status == 11) {
+  if (status == 10) {
     lcd.print("What time (hr)?");
     delay(DELAY_QUESTION);
     lcd.setCursor(0, 1);
@@ -208,7 +196,7 @@ void loop() {
     lcd.clear();
     status = status + 1;
   }
-   if (status == 12) {
+   if (status == 11) {
       String wordList[] = {"elbow", "apple", "carpet", "saddle", "bubble"};
       lcd.setCursor(0, 0);
       lcd.print("Read the next");
@@ -321,7 +309,7 @@ void loop() {
 
       }
     }*/
-  if (status == 13) {
+  if (status == 12) {
     lcd.clear();
     lcd.setCursor(0, 0);
     lcd.print("Tilt test 1: ");
